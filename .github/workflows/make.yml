@@ -66,6 +66,8 @@ jobs:
         git clone -b gki-android13-5.10 --single-branch https://gitlab.com/simonpunk/susfs4ksu.git
         
         cd ./susfs4ksu
+
+        git checkout ed3d6d9c9a2652e1c70f153f5358701e996d646c
         
         cp ./kernel_patches/50_add_susfs_in_gki-android13-5.10.patch ../common/
         
@@ -116,8 +118,6 @@ jobs:
           "susfs_is_current_zygote_domain" \
           "susfs_is_current_init_domain" \
           >> ./common/drivers/kernelsu/selinux/selinux.c
-
-        printf 'EXPORT_SYMBOL(ksu_install_su_fd);\n' >> ./KernelSU/kernel/supercall/supercall.c
         
     - name: apply_config_fragment
       working-directory: ${{ env.KERNEL }}/common
