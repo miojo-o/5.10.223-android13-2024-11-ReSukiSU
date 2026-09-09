@@ -12,4 +12,4 @@
 ## Features
 - SuSFS 2.3.0
 - BBG
-- BBRv3
+- BBR
