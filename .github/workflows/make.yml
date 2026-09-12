@@ -67,7 +67,7 @@ jobs:
         
         cd ./susfs4ksu
 
-        git checkout f2878eb5c0c9c7082212ef109b9e9e5042fd9fab
+        #git checkout f2878eb5c0c9c7082212ef109b9e9e5042fd9fab
         
         cp ./kernel_patches/50_add_susfs_in_gki-android13-5.10.patch ../common/
         cp -r ./kernel_patches/fs/* ../common/fs/
@@ -238,7 +238,7 @@ jobs:
         tag_name: v${{ github.run_number }}
         name: ReSukiSU Build ${{ github.run_number }}
         body: |
-          ## ReSukiSU + SusFS 2.2.0 + BBG + BBR
+          ## ReSukiSU + SuSFS 2.2.0 + BBG + BBR
       
           - Kernel: 5.10.223 (android13-2024-11_r6)
           - ksu_driver: (main) x
@@ -246,7 +246,7 @@ jobs:
           - tested in: a14 5g
       
           ## install
-          flash ak3 using horizon kernel flasher
+          flash ak3 using horizon kernel flasher or custom recovery
           
           https://github.com/libxzr/HorizonKernelFlasher/releases
           
