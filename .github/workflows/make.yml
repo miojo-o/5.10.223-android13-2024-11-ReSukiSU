@@ -246,12 +246,12 @@ jobs:
         tag_name: v${{ github.run_number }}
         name: ReSukiSU Build ${{ github.run_number }}
         body: |
-          ## ReSukiSU + SuSFS 2.2.0 + BBG + BBR
+          ## ReSukiSU + SuSFS 2.2.0 + BBG + BBRv3
       
           - Kernel: 5.10.223 (android13-2024-11_r6)
           - ksu_driver: (main) ${{ env.KSU_DRIVER }}
 
-          - tested in: a14 5g
+          - tested in: a14
       
           ## install
           flash ak3 using horizon kernel flasher or custom recovery
