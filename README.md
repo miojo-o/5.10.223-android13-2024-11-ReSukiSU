@@ -4,7 +4,7 @@
 
 | Field | Value |
 |-------|-------|
-| Model | Samsung SM-A145M (Galaxy A14 5G) |
+| Model | Samsung SM-A145M (Galaxy A14) |
 | SoC | Exynos 850 (s5e3830) |
 | Android | 15 |
 | Architecture | arm64-v8a |
