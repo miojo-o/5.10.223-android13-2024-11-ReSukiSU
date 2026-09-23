@@ -192,6 +192,14 @@ jobs:
         export BUILD_CONFIG=common/build.config.gki.aarch64
         
         build/build.sh 2>&1 | tee build.log
+
+    - name: get_ksu_driver
+      working-directory: ${{ env.KERNEL }}
+      run: |
+        KSU_DRIVER=$(grep "version code" ./build.log | grep -oP '\d+' | head -1)
+        
+        echo "KSU_DRIVER=$KSU_DRIVER" >> $GITHUB_ENV
+        echo "ksu driver: $KSU_DRIVER"
   
     - name: check_config_after_build
       working-directory: ${{ env.KERNEL }}
@@ -217,14 +225,6 @@ jobs:
         cd anykernel3
         
         zip -r9 ../resukisu-5.10.223-android13-2024-11-anykernel3.zip . -x "*.git*"
-
-    - name: get_ksu_driver
-      working-directory: ${{ env.KERNEL }}
-      run: |
-        KSU_DRIVER=$(grep "version code" ./build.log | grep -oP '\d+' | head -1)
-        
-        echo "KSU_DRIVER=$KSU_DRIVER" >> $GITHUB_ENV
-        echo "ksu driver: $KSU_DRIVER"
         
     - name: upload_anykernel3
       uses: actions/upload-artifact@v4
