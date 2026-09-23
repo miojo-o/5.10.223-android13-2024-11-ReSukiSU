@@ -33,13 +33,12 @@ jobs:
         sudo apt-get update && sudo apt-get install -y git-core gnupg flex bison build-essential zip curl zlib1g-dev libxml2-utils xsltproc unzip ccache repo
           
     - name: clone_kernel_source
-      working-directory: ${{ github.workspace }}
       run: |
         mkdir -p $KERNEL && cd $KERNEL
         
         repo init --depth=1 -u https://android.googlesource.com/kernel/manifest -b common-android13-5.10
         
-        repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
+        repo sync -c -j$(nproc --all) --no-tags --fail-fast
         
         cd ./common
         
@@ -48,7 +47,6 @@ jobs:
         git checkout -b android13-5.10-2024-11_r6 FETCH_HEAD
         
     - name: clone_wild_patches
-      working-directory: ${{ github.workspace }}
       run: |
         git clone https://github.com/WildKernels/kernel_patches.git
         
@@ -203,7 +201,6 @@ jobs:
         cat ./out/android13-5.10/common/include/generated/utsrelease.h
       
     - name: make_anykernel3
-      working-directory: ${{ env.WORKSPACE }}
       run: |
         git clone https://github.com/osm0sis/AnyKernel3 anykernel3
         
