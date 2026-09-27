@@ -1,5 +1,5 @@
 properties() { '
-kernel.string=ReSukiSU 5.10-android13-2024-11_r6
+kernel.string=ReSukiSU miojo._.o 5.10-android13-2024-11_r6
 do.devicecheck=0
 do.modules=0
 do.systemless=0
