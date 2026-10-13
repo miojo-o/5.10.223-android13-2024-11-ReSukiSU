@@ -59,6 +59,7 @@ jobs:
         curl -LSs "https://raw.githubusercontent.com/Baka-SU/BakaSU/main/kernel/setup.sh" | bash
         
     - name: susfs_setup
+      if: false
       working-directory: ${{ env.KERNEL }}
       run: |
         git clone -b gki-android13-5.10 --single-branch https://gitlab.com/simonpunk/susfs4ksu.git
@@ -106,6 +107,7 @@ jobs:
         echo 'CFLAGS_susfs.o += -Wno-unused-function -Wno-unused-variable' >> ./common/fs/Makefile
         
     - name: fix_export_symbols
+      if: false
       working-directory: ${{ env.KERNEL }}
       run: |
         printf 'EXPORT_SYMBOL(%s);\n' \
