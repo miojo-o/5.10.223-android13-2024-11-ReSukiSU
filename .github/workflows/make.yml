@@ -56,7 +56,7 @@ jobs:
     - name: ksu_setup
       working-directory: ${{ env.KERNEL }}
       run: |
-        curl -LSs "https://raw.githubusercontent.com/Baka-SU/BakaSU/main/kernel/setup.sh" | bash
+        curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
         
     - name: susfs_setup
       if: false
