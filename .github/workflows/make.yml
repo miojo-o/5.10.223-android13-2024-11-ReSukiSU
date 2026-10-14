@@ -59,7 +59,6 @@ jobs:
         curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
         
     - name: susfs_setup
-      if: false
       working-directory: ${{ env.KERNEL }}
       run: |
         git clone -b gki-android13-5.10 --single-branch https://gitlab.com/simonpunk/susfs4ksu.git
