@@ -190,6 +190,11 @@ jobs:
         export SKIP_EXT_MODULES=1
         export SKIP_CP_KERNEL_HDR=1
         export SKIP_MRPROPER=1
+        export SKIP_VENDOR_BOOT
+        
+        export BUILD_GKI_ARTIFACTS=
+        export BUILD_GKI_CERTIFICATION_TOOLS=0
+        export BUILD_SYSTEM_DLKM=0
         
         export BUILD_CONFIG=common/build.config.gki.aarch64
         
