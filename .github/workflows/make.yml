@@ -54,9 +54,11 @@ jobs:
         git clone https://github.com/WildKernels/kernel_patches.git
         
     - name: ksu_setup
-      working-directory: ${{ env.KERNEL }}
+      working-directory: ${{ env.KERNEL }}/common
       run: |
-        curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/sync-susfs/kernel/setup.sh" | bash
+        git clone https://github.com/LyraVoid/FinaSU ./drivers/kernelsu
+
+        bash ./drivers/kernelsu/kernel/setup.sh -i
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
@@ -199,14 +201,6 @@ jobs:
         export BUILD_CONFIG=common/build.config.gki.aarch64
         
         build/build.sh 2>&1 | tee build.log
-
-    - name: get_ksu_driver
-      working-directory: ${{ env.KERNEL }}
-      run: |
-        KSU_DRIVER=$(grep "version code" ./build.log | grep -oP '\d+' | head -1)
-        
-        echo "KSU_DRIVER=$KSU_DRIVER" >> $GITHUB_ENV
-        echo "ksu driver: $KSU_DRIVER"
   
     - name: check_config_after_build
       working-directory: ${{ env.KERNEL }}
@@ -231,27 +225,26 @@ jobs:
         
         cd anykernel3
         
-        zip -r9 ../resukisu-5.10.223-android13-2024-11-anykernel3.zip . -x "*.git*"
+        zip -r9 ../finaSU-5.10.223-android13-2024-11-anykernel3.zip . -x "*.git*"
         
     - name: upload_anykernel3
       uses: actions/upload-artifact@v4
       with:
-        name: resukisu-5.10.223-android13
-        path: ${{ github.workspace }}/resukisu-5.10.223-android13-2024-11-anykernel3.zip
+        name: finaSU-5.10.223-android13
+        path: ${{ github.workspace }}/finaSU-5.10.223-android13-2024-11-anykernel3.zip
         compression-level: 9
 
     - name: create_release
       uses: softprops/action-gh-release@v2
       with:
-        files: ${{ github.workspace }}/resukisu-5.10.223-android13-2024-11-anykernel3.zip
+        files: ${{ github.workspace }}/finaSU-5.10.223-android13-2024-11-anykernel3.zip
         tag_name: v${{ github.run_number }}
-        name: ReSukiSU Build ${{ github.run_number }}
+        name: finaSU Build ${{ github.run_number }}
         body: |
-          ## ReSukiSU + SuSFS 2.3.0 + BBG + BBRv3
+          ## finaSU + SuSFS 2.3.0 + BBG + BBRv3
       
           - Kernel: 5.10.223 (android13-2024-11_r6)
-          - ksu_driver: (main) ${{ env.KSU_DRIVER }}
-
+          - ksu_driver: (main) x
           - tested in: a145m
       
           ## install
