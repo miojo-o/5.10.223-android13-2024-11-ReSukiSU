@@ -56,8 +56,10 @@ jobs:
     - name: ksu_setup
       working-directory: ${{ env.KERNEL }}
       run: |
-        bash <(curl -LSs https://raw.githubusercontent.com/LyraVoid/FinaSU/master/kernel/setup.sh)
-        
+        - name: ksu_setup
+  working-directory: ${{ env.KERNEL }}  # Lembre-se do ajuste anterior
+  run: |
+    bash <(curl -LSs https://raw.githubusercontent.com/LyraVoid/FinaSU/master/kernel/setup.sh) v1.0.9
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
       run: |
@@ -195,6 +197,10 @@ jobs:
         export BUILD_GKI_ARTIFACTS=
         export BUILD_GKI_CERTIFICATION_TOOLS=0
         export BUILD_SYSTEM_DLKM=0
+
+        // manager apk 1.0.9
+        export EXPECTED_SIZE="716"
+        export EXPECTED_HASH="2d89b50aaf1db013c2b6738f973f48b62ea21a3a8d7216bfec3521065d448458"
         
         export BUILD_CONFIG=common/build.config.gki.aarch64
         
