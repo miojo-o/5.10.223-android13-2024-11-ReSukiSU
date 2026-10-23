@@ -58,7 +58,7 @@ jobs:
       run: |
         git clone https://github.com/LyraVoid/FinaSU ./drivers/kernelsu
 
-        bash ./drivers/kernelsu/kernel/setup.sh -i
+        bash drivers/kernelsu/kernel/setup.sh
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
@@ -176,7 +176,7 @@ jobs:
           git diff --cached --quiet || git commit -m "miojo_o clean dirty"
         }
         
-        commit_repo "$KERNEL/KernelSU"
+        commit_repo "$KERNEL/FinaSU"
         commit_repo "$KERNEL/common"
         
     - name: make_image
