@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [main]
+    branches: [finaSU]
 
 env:
   WORKSPACE: ${{ github.workspace }}
