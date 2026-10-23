@@ -54,7 +54,7 @@ jobs:
         git clone https://github.com/WildKernels/kernel_patches.git
         
     - name: ksu_setup
-      working-directory: ${{ env.KERNEL }}/common
+      working-directory: ${{ env.KERNEL }}
       run: |
         bash <(curl -LSs https://raw.githubusercontent.com/LyraVoid/FinaSU/master/kernel/setup.sh)
         
