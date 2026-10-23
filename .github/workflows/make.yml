@@ -56,11 +56,10 @@ jobs:
     - name: ksu_setup
       working-directory: ${{ env.KERNEL }}/common
       run: |
-        git clone https://github.com/LyraVoid/FinaSU ./drivers/kernelsu
-
-        cd ./drivers/kernelsu
-
-        bash ./kernel/setup.sh
+        - name: ksu_setup
+  working-directory: ${{ env.KERNEL }}/common
+  run: |
+    bash <(curl -LSs https://raw.githubusercontent.com/LyraVoid/FinaSU/master/kernel/setup.sh)
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
