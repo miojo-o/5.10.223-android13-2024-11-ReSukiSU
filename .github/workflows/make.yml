@@ -58,7 +58,9 @@ jobs:
       run: |
         git clone https://github.com/LyraVoid/FinaSU ./drivers/kernelsu
 
-        bash drivers/kernelsu/kernel/setup.sh
+        cd ./drivers/kernelsu
+
+        bash ./kernel/setup.sh
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
