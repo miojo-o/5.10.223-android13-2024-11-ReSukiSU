@@ -56,7 +56,7 @@ jobs:
     - name: ksu_setup
       working-directory: ${{ env.KERNEL }}
       run: |
-        bash <(curl -LSs https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh)
+        bash <(curl -LSs https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh) dev-susfs
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
