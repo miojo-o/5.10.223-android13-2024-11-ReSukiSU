@@ -57,6 +57,11 @@ jobs:
       working-directory: ${{ env.KERNEL }}
       run: |
         bash <(curl -LSs https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh)
+
+    - name: apply_next_hooks_patch
+      working-directory: ${{ env.KERNEL }}/KernelSU-Next
+      run: |
+        patch -p1 < "$WORKSPACE/kernel_patches/next/next_hooks.patch"
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
@@ -174,7 +179,7 @@ jobs:
           git diff --cached --quiet || git commit -m "miojo_o clean dirty"
         }
         
-        commit_repo "$KERNEL/KernelSU"
+        commit_repo "$KERNEL/KernelSU-Next"
         commit_repo "$KERNEL/common"
         
     - name: make_image
