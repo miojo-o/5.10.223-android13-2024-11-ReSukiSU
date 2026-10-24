@@ -1,4 +1,4 @@
-# ReSukiSU gki 5.10.223-android13-2024-11_r6
+# KernelSU-Next gki 5.10.223-android13-2024-11_r6
 
 ## Tested Device
 

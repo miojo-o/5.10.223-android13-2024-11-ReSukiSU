@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [main]
+    branches: [KsuNext]
 
 env:
   WORKSPACE: ${{ github.workspace }}
@@ -56,7 +56,7 @@ jobs:
     - name: ksu_setup
       working-directory: ${{ env.KERNEL }}
       run: |
-        curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/sync-susfs/kernel/setup.sh" | bash
+        bash <(curl -LSs https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh)
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
@@ -231,13 +231,13 @@ jobs:
         
         cd anykernel3
         
-        zip -r9 ../resukisu-5.10.223-android13-2024-11-anykernel3.zip . -x "*.git*"
+        zip -r9 ../ksunext-5.10.223-android13-2024-11-anykernel3.zip . -x "*.git*"
         
     - name: upload_anykernel3
       uses: actions/upload-artifact@v4
       with:
-        name: resukisu-5.10.223-android13
-        path: ${{ github.workspace }}/resukisu-5.10.223-android13-2024-11-anykernel3.zip
+        name: ksunext-5.10.223-android13
+        path: ${{ github.workspace }}/ksunext-5.10.223-android13-2024-11-anykernel3.zip
         compression-level: 9
 
     - name: create_release
@@ -245,12 +245,12 @@ jobs:
       with:
         files: ${{ github.workspace }}/resukisu-5.10.223-android13-2024-11-anykernel3.zip
         tag_name: v${{ github.run_number }}
-        name: ReSukiSU Build ${{ github.run_number }}
+        name: KsuNext Build ${{ github.run_number }}
         body: |
-          ## ReSukiSU + SuSFS 2.3.0 + BBG + BBRv3
+          ## KernelSU-Next + SuSFS 2.3.0 + BBG + BBRv3
       
           - Kernel: 5.10.223 (android13-2024-11_r6)
-          - ksu_driver: (main) ${{ env.KSU_DRIVER }}
+          - ksu_driver: (dev-susfs) x
 
           - tested in: a145m
       
