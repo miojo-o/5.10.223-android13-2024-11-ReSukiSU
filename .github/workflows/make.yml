@@ -235,7 +235,7 @@ jobs:
     - name: create_release
       uses: softprops/action-gh-release@v2
       with:
-        files: ${{ github.workspace }}/resukisu-5.10.223-android13-2024-11-anykernel3.zip
+        files: ${{ github.workspace }}/ksunext-5.10.223-android13-2024-11-anykernel3.zip
         tag_name: v${{ github.run_number }}
         name: KsuNext Build ${{ github.run_number }}
         body: |
