@@ -57,11 +57,6 @@ jobs:
       working-directory: ${{ env.KERNEL }}
       run: |
         bash <(curl -LSs https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh)
-
-    - name: apply_next_hooks_patch
-      working-directory: ${{ env.KERNEL }}/common
-      run: |
-        patch -p1 < "$WORKSPACE/kernel_patches/next/next_hooks.patch"
         
     - name: susfs_setup
       working-directory: ${{ env.KERNEL }}
